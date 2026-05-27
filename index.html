@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Loja Online</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+<header>
+
+<img src="logo.png" class="logo" alt="Logo">
+
+<h1>Circuito Zero</h1>
+
+<p>Loja Online</p>
+<p>Venda de Artigos Eletrônicos</p>
+
+</header>
+
+
+<nav>
+    <ul class="navlist">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="produtos.html">Produtos</a></li> 
+        <li><a href="Ofertas.html">Ofertas</a></li>
+        <li><a href="Contato.html">Contato</a></li>
+    </ul>
+</nav>
+
+<div class="banner-carousel">
+    <div class="carousel-container">
+        <div class="carousel-slides">
+            <div class="carousel-slide slide1">
+                <h1> Ofertas Imperdíveis</h1>
+                <p> Em produtos de tecnologia</p>
+            </div>
+        <div class="carousel-slide slide2">
+    <h1>Eleve o seu Setup</h1>
+    <p> Mais potência e maior desempenho</p>
+</div>
+
+<div class="carousel-slide slide3">
+      <h1>Desempenho profissional</h1>
+      <p>Ideal para jogos e produtividade</p>
+    </div>
+    </div>
+
+<button class="carousel-btn prev"id="prevBtn">&#10094;</button>
+<button class="carousel-btn next" id="nextBtn">&#10095;</button>
+</div>
+
+<div class="carousel-dots" id="dotsContainer"></div>
+</div>
+
+
+<section class="pesquisa">
+
+<input type="text" placeholder="Pesquisar produto...">
+
+<button>Buscar</button>
+
+</section>
+
+<footer>
+
+ <p>© 2026 Loja Online</p>
+
+</footer>
+
+<script>
+
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dotsContainer = document.getElementById('dotsContainer');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let autoSlide;
+
+    function updateCarousel() {
+        const container = document.querySelector('.carousel-slides');
+        container.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        
+        document.querySelectorAll('.dot').forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+
+    function createDots() {
+        slides.forEach((_, index) => {
+            const dot = document.createElement('span');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                currentIndex = index;
+                updateCarousel();
+                resetAutoSlide();
+            });
+            dotsContainer.appendChild(dot);
+        });
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateCarousel();
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateCarousel();
+    }
+
+    function startAutoSlide() {
+        autoSlide = setInterval(nextSlide, 5000);
+    }
+
+    function resetAutoSlide() {
+        clearInterval(autoSlide);
+        startAutoSlide();
+    }
+
+    prevBtn.addEventListener('click', () => {
+        prevSlide();
+        resetAutoSlide();
+    });
+    nextBtn.addEventListener('click', () => {
+        nextSlide();
+        resetAutoSlide();
+    });
+
+    createDots();
+    startAutoSlide();
+</script>
+
+</body>
+
+</body>
+
+</html>
