@@ -185,7 +185,7 @@ background:#f5c9f5;
 
 header{
 background:#111;
-background-image:url(fundo.jpeg);
+background-image:url("src/fundo.jpeg");
 background-size: cover;
 background-position:center;
 height: 300px;
@@ -293,15 +293,15 @@ color:#00ff88;
 }
 
 .slide1 {
-    background-image: url('setup.webp');
+    background-image: url('src/setup.webp');
 }
 
 .slide2 {
-    background-image: url('slide2.jpg');
+    background-image: url('src/slide2.jpg');
 }
 
 .slide3 {
-    background-image: url('slid33.jpg');
+    background-image: url('src/slid33.jpg');
 }
 
 .carousel-btn {
