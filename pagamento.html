@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Loja Online</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div id="header-padrao"></div>
+
+<!-- BOTÃO DO CARRINHO  -->
+<button onclick="abrirCarrinho()" style="position: fixed; right: 20px; top: 20px; background: none; border: none; cursor: pointer; z-index: 9999;">
+    <div style="position: relative;">
+        <img src="src/carrinho2..webp" alt="Carrinho" style="width: 60px;">
+        <span id="carrinho-contador" style="position: absolute; top: 0px; right: 0px; background: #ff3366; color: white; border-radius: 50%; padding: 2px 8px; font-size: 12px; font-weight: bold;">0</span>
+    </div>
+</button>
+
+    
+    <main class="container caixa-checkout">
+        <form onsubmit="finalizarPedido(event)">
+            <h2 class="checkout-titulo">DADOS PARA ENTREGA</h2>
+            
+            <div class="form-grid">
+                <div class="form-group full-width">
+                    <label class="label-pagamento">Nome Completo:</label>
+                    <input type="text" class="input-pagamento" required>
+                </div>
+                <div class="form-group full-width">
+                    <label class="label-pagamento">E-mail:</label>
+                    <input type="email" class="input-pagamento" required>
+                </div>
+                <div class="form-group">
+                    <label class="label-pagamento">Telefone:</label>
+                    <input type="tel" placeholder="(21) 99999-9999" class="input-pagamento" required>
+                </div>
+                <div class="form-group">
+                    <label class="label-pagamento">CEP:</label>
+                    <input type="text" placeholder="00000-000" class="input-pagamento" required>
+                </div>
+                <div class="form-group full-width">
+                    <label class="label-pagamento">Endereço:</label>
+                    <input type="text" class="input-pagamento" required>
+                </div>
+                <div class="form-group col-3">
+                    <label class="label-pagamento">Número:</label>
+                    <input type="text" class="input-pagamento" required>
+                </div>
+                <div class="form-group col-9">
+                    <label class="label-pagamento">Complemento:</label>
+                    <input type="text" class="input-pagamento">
+                </div>
+                <div class="form-group col-5">
+                    <label class="label-pagamento">Bairro:</label>
+                    <input type="text" class="input-pagamento" required>
+                </div>
+                <div class="form-group col-5">
+                    <label class="label-pagamento">Cidade:</label>
+                    <input type="text" class="input-pagamento" required>
+                </div>
+                <div class="form-group col-2">
+                    <label class="label-pagamento">UF:</label>
+                    <input type="text" maxlength="2" class="input-pagamento" required>
+                </div>
+            </div>
+
+            <h2 class="checkout-titulo" style="margin-top: 40px;">MÉTODO DE PAGAMENTO</h2>
+            
+            <div class="pagamento-opcoes">
+                <label class="metodo-item">
+                    <input type="radio" name="pgto" value="pix" required> <span>📱 Pix</span>
+                </label>
+                <label class="metodo-item">
+                    <input type="radio" name="pgto" value="boleto"> <span>📄 Boleto Bancário</span>
+                </label>
+                <label class="metodo-item">
+                    <input type="radio" name="pgto" value="cartao"> <span>💳 Cartão de Crédito</span>
+                </label>
+            </div>
+
+            <button type="submit" class="btn-checkout">FINALIZAR PEDIDO</button>
+        </form>
+    </main>
+
+    <!-- Modal de Confirmação -->
+    <div id="modal-confirmacao" class="modal-overlay">
+        <div class="modal-content">
+            <div class="spinner"></div>
+            <h2>Pagamento Confirmado!</h2>
+            <p>Redirecionando...</p>
+        </div>
+    </div>
+
+    <footer id="footer-padrao"></footer>
+
+    <!-- SIDEBAR DO CARRINHO -->
+    <aside id="carrinho-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>MEU CARRINHO</h3>
+            <button onclick="fecharCarrinho()">X</button>
+        </div>
+        <div id="carrinho-itens-lista"></div>
+        <div class="cart-footer">
+            <p>Total: <strong id="carrinho-subtotal">R$ 0,00</strong></p>
+            <button class="btn-login" onclick="window.location.href='pagamento.html'">FINALIZAR PEDIDO</button>
+        </div>
+    </aside>
+
+    <script src="script.js"></script>
+</body>
+</html>

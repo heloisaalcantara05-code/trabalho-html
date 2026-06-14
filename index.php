@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+    header("Location: login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -12,30 +19,19 @@
 
 </head>
 
-
 <body>
 
-<header>
+<div id="header-padrao"></div>
 
-<img src="src/logo.png" class="logo" alt="Logo">
+<!-- BOTÃO DO CARRINHO  -->
+<button onclick="abrirCarrinho()" style="position: fixed; right: 20px; top: 20px; background: none; border: none; cursor: pointer; z-index: 9999;">
+    <div style="position: relative;">
+        <img src="src/carrinho2..webp" alt="Carrinho" style="width: 60px;">
+        <span id="carrinho-contador" style="position: absolute; top: 0px; right: 0px; background: #ff3366; color: white; border-radius: 50%; padding: 2px 8px; font-size: 12px; font-weight: bold;">0</span>
+    </div>
+</button>
 
-<h1>Circuito Zero</h1>
-
-<p>Loja Online</p>
-<p>Venda de Artigos Eletrônicos</p>
-
-</header>
-
-
-<nav>
-    <ul class="navlist">
-        <li><a href="index.html">Início</a></li>
-        <li><a href="produtos.html">Produtos</a></li> 
-        <li><a href="ofertas.html">Ofertas</a></li>
-        <li><a href="contato.html">Contato</a></li>
-    </ul>
-</nav>
-
+<main>
 <div class="banner-carousel">
     <div class="carousel-container">
         <div class="carousel-slides">
@@ -70,11 +66,24 @@
 
 </section>
 
-<footer>
 
- <p>© 2026 Loja Online</p>
+</main>
 
-</footer>
+<footer id="footer-padrao"></footer>
+
+<aside id="carrinho-sidebar" class="cart-sidebar">
+    <div class="cart-header">
+        <h3>MEU CARRINHO</h3>
+        <button onclick="fecharCarrinho()">X</button>
+    </div>
+    <div id="carrinho-itens-lista"></div>
+    <div class="cart-footer">
+        <p>Total: <strong id="carrinho-subtotal">R$ 0,00</strong></p>
+        <button class="btn-login" onclick="window.location.href='pagamento.html'">FINALIZAR PEDIDO</button>
+    </div>
+</aside>
+
+<script src="script.js"></script>
 
 <script>
 

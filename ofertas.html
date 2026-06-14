@@ -15,26 +15,17 @@
 
 <body>
 
-<header>
+<div id="header-padrao"></div>
 
-<img src="src/logo.png" class="logo" alt="Logo">
+<!-- BOTÃO DO CARRINHO  -->
+<button onclick="abrirCarrinho()" style="position: fixed; right: 20px; top: 20px; background: none; border: none; cursor: pointer; z-index: 9999;">
+    <div style="position: relative;">
+        <img src="src/carrinho2..webp" alt="Carrinho" style="width: 60px;">
+        <span id="carrinho-contador" style="position: absolute; top: 0px; right: 0px; background: #ff3366; color: white; border-radius: 50%; padding: 2px 8px; font-size: 12px; font-weight: bold;">0</span>
+    </div>
+</button>
 
-<h1>Circuito Zero</h1>
-
-<p>Loja Online</p>
-<p>Venda de Artigos Eletrônicos</p>
-
-</header>
-
-<nav>
-    <ul class="navlist">
-        <li><a href="index.html">Início</a></li>        
-        <li><a href="produtos.html">Produtos</a></li>  
-        <li><a href="ofertas.html">Ofertas</a></li>
-        <li><a href="contato.html">Contato</a></li>
-    </ul>
-</nav>
-
+<main>
 <section class="pesquisa">
 
 <input type="text" placeholder="Pesquisar produtos...">
@@ -51,42 +42,59 @@
                 <img src="src/mousegamer2.png">
                 <h3>Mouse Gamer</h3>
                 <p class="preco"><span style="text-decoration: line-through;">R$90</span><br>R$83,70   7%OFF</p>
-                <button>Comprar</button>
+                <button onclick="adicionarAoCarrinho('mousegamer2', 'Mouse Gamer', 83.70, 'src/mousegamer2.png')">Comprar</button>
             </div>
 
             <div class="produto">
                 <img src="src/tecladogamer2.webp">
                 <h3>Teclado Gamer</h3>
                 <p class="preco"><span style="text-decoration: line-through;">R$150</span><br>R$112,50   25%OFF</p>
-                <button>Comprar</button>
+                <button onclick="adicionarAoCarrinho('tecladogamer2', 'Teclado Gamer', 112.50, 'src/tecladogamer2.webp')">Comprar</button>
             </div>
 
             <div class="produto">
                 <img src="src/ProcessadorIntel.webp">
                 <h3>Processador Intel</h3>
                 <p class="preco"><span style="text-decoration: line-through;">R$320</span><br>R$272   15%OFF</p>
-                <button>Comprar</button>
+                <button onclick="adicionarAoCarrinho('ProcessadorIntel', 'Processador Intel', 272.00, 'src/ProcessadorIntel.webp')">Comprar</button>
             </div>
 
             <div class="produto">
                 <img src="src/PlacadeVideoRTX3050.webp">
                 <h3>Placa de Vídeo</h3>
                 <p class="preco"><span style="text-decoration: line-through;">R$1.500</span><br>R$1.200  20%OFF</p>
-                <button>Comprar</button>
+               <button onclick="adicionarAoCarrinho('PlacadeVideoRTX3050', 'Placa de Vídeo', 1200.00, 'src/PlacadeVideoRTX3050.webp')">Comprar</button>
             </div>
 
             <div class="produto">
                 <img src="src/HDexterno1tb.jpg">
                 <h3>HD Externo 1tb</h3>
                 <p class="preco"><span style="text-decoration: line-through;">R$280</span><br>R$140   50%OFF</p>
-                <button>Comprar</button>
+                <button onclick="adicionarAoCarrinho('HDexterno1tb', 'HD Externo 1tb', 140.00, 'src/HDexterno1tb.jpg')">Comprar</button>
             </div>
 
         </div>
     </section>
 
 </section>
+</main>
 
-<footer>
+<footer id="footer-padrao"></footer>
 
- <p>© 2026 Loja Online</p>
+<!-- SIDEBAR DO CARRINHO -->
+<aside id="carrinho-sidebar" class="cart-sidebar">
+    <div class="cart-header">
+        <h3>MEU CARRINHO</h3>
+        <button onclick="fecharCarrinho()">X</button>
+    </div>
+    <div id="carrinho-itens-lista"></div>
+    <div class="cart-footer">
+        <p>Total: <strong id="carrinho-subtotal">R$ 0,00</strong></p>
+        <button class="btn-login" onclick="window.location.href='pagamento.html'">FINALIZAR PEDIDO</button>
+    </div>
+</aside>
+
+<script src="script.js"></script>
+
+</body>
+</html>
